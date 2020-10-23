@@ -31,9 +31,9 @@ public class UserManager {
                 "UserName=?",new String[]{username},null,null,null);
         // String flag=cursor.getString(cursor.getColumnIndex("UserName"));
         if(cursor!=null && cursor.moveToFirst()){
-            return true;
+            return false;
         } else{
-             return false;
+             return true;
          }
     }
     public String findPsw(String username){

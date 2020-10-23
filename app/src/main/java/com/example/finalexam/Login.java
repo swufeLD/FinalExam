@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +17,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Login extends AppCompatActivity implements  RadioGroup.OnCheckedChangeListener, View.OnClickListener {
+    public static final String TAG = "Login";
+
     Intent intent;
     RadioButton rb1;
     RadioButton rb2;
@@ -62,16 +65,11 @@ public class Login extends AppCompatActivity implements  RadioGroup.OnCheckedCha
 
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int id) {
-        switch (id){
-            case R.id.radioButton:
-                flag=true;
-
-             case R.id.radioButton2:
-                 flag=false;
-
-              default:
-                 break;
-            }
+        if(id==R.id.radioButton){
+            flag=true;
+        }else{
+            flag=false;
+        }
     }
 
     @Override
@@ -82,19 +80,22 @@ public class Login extends AppCompatActivity implements  RadioGroup.OnCheckedCha
         UserManager userManager=new UserManager(this);
         boolean nameflag=userManager.findByName(name);
 
-           if(nameflag){
+           if(!nameflag){
                if(userManager.findPsw(name).equals(p)){
-                   intent=new Intent(this,MainActivity.class);
-                   startActivity(intent);
-
+                   Log.i(TAG, "flag: "+flag);
                    if(flag){
                        //将数据存入文件，保存用户状态
                        sharedPreferences=getSharedPreferences("login", Activity.MODE_PRIVATE);
                        SharedPreferences.Editor editor=sharedPreferences.edit();
                        editor.putString("username",name);
+                      // Log.i(TAG, "flag: "+flag);
                        editor.putString("psw",p);
                        editor.apply();
+                     //  Log.i(TAG, "flag: "+flag);
                    }
+                   intent=new Intent(this,MainActivity.class);
+                   startActivity(intent);
+
                }else{
                    Toast.makeText(this,"密码错误，请重新输入",Toast.LENGTH_LONG).show();
                    psw.setText("");
