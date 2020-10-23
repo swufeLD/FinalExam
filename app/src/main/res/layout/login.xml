@@ -11,19 +11,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="150dp"
         android:text="请使用邮箱/电话号码/用户名进行登录"
         android:textColor="#ffff"
         android:textSize="18dp" />
 
-    <TextView
-        android:id="@+id/textView8"
+    <EditText
+        android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""
-        android:layout_marginLeft="5dp"
+        android:inputType="none"
         android:layout_marginTop="15dp"
-        android:textSize="30dp"/>
+        android:layout_marginLeft="5dp"
+        android:textSize="15dp"/>
 
     <TextView
         android:id="@+id/textView9"
@@ -36,23 +36,57 @@
         android:layout_marginTop="15dp"/>
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/Password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="5dp"
         android:textSize="15dp"/>
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radiogroup"
+        android:orientation="vertical"
+        >
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="记住登录状态"
+            android:textColor="#fff"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"/>
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="不记住登录状态"
+            android:textColor="#fff"/>
+
+    </RadioGroup>
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="确认登陆"
+        android:textColor="#fff"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="100dp"
+        android:textSize="18dp"/>
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="欢迎使用XXX"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="100dp"
         android:textSize="18dp"
         android:gravity="center"
         android:textColor="#fff"/>
+
 
 
 </LinearLayout>
