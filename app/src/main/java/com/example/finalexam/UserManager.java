@@ -29,12 +29,23 @@ public class UserManager {
         SQLiteDatabase db=dbHelper.getWritableDatabase();
         Cursor cursor=db.query(usertable,null,
                 "UserName=?",new String[]{username},null,null,null);
-         String flag=cursor.getString(cursor.getColumnIndex("UserName"));
-         if(!flag.equals("")){
-             return true;
-         }else{
+        // String flag=cursor.getString(cursor.getColumnIndex("UserName"));
+        if(cursor!=null && cursor.moveToFirst()){
+            return true;
+        } else{
              return false;
          }
+    }
+    public String findPsw(String username){
+        String psw=null;
+        SQLiteDatabase db=dbHelper.getWritableDatabase();
+        Cursor cursor=db.query(usertable,null,
+                "UserName=?",new String[]{username},null,null,null);
+        if(cursor!=null && cursor.moveToFirst()){
+
+            psw=cursor.getString(cursor.getColumnIndex("UserPassword"));
+        }
+        return psw;
     }
 
 }

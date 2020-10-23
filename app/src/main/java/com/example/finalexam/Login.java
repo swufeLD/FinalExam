@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -78,16 +79,30 @@ public class Login extends AppCompatActivity implements  RadioGroup.OnCheckedCha
         String name = username.getText().toString();
         String p=psw.getText().toString();
            // 确认数据库中是否存在该用户
+        UserManager userManager=new UserManager(this);
+        boolean nameflag=userManager.findByName(name);
 
-        if(flag){
-            //将数据存入文件，保存用户状态
-            sharedPreferences=getSharedPreferences("login", Activity.MODE_PRIVATE);
-            SharedPreferences.Editor editor=sharedPreferences.edit();
-            editor.putString("username",name);
-            editor.putString("psw",p);
-            editor.apply();
-        }
-        intent=new Intent(this,MainActivity.class);
-        startActivity(intent);
+           if(nameflag){
+               if(userManager.findPsw(name).equals(p)){
+                   intent=new Intent(this,MainActivity.class);
+                   startActivity(intent);
+
+                   if(flag){
+                       //将数据存入文件，保存用户状态
+                       sharedPreferences=getSharedPreferences("login", Activity.MODE_PRIVATE);
+                       SharedPreferences.Editor editor=sharedPreferences.edit();
+                       editor.putString("username",name);
+                       editor.putString("psw",p);
+                       editor.apply();
+                   }
+               }else{
+                   Toast.makeText(this,"密码错误，请重新输入",Toast.LENGTH_LONG).show();
+                   psw.setText("");
+               }
+
+           }else{
+               Toast.makeText(this,"用户名错误，请重新输入",Toast.LENGTH_LONG).show();
+               username.setText("");
+           }
     }
 }

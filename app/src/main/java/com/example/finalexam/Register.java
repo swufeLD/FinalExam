@@ -21,6 +21,7 @@ public class Register extends AppCompatActivity  implements View.OnClickListener
     TextView reg_email;
     TextView psw1;
     TextView psw2;
+    UserManager userManager;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,28 +56,37 @@ public class Register extends AppCompatActivity  implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-       if(view.getId()==R.id.btn4){
+           String name=reg_name.getText().toString();
            String email=reg_email.getText().toString();
            String p1=psw1.getText().toString();
            String p2=psw2.getText().toString();
-           //判断邮箱
-           if(isEmail(email)){
-               //判断密码
-               if(!p1.equals(p2)){
-                   psw1.setText("");
-                   psw2.setText("");
-                   Toast.makeText(this,"两次密码不正确",Toast.LENGTH_LONG).show();
+
+           userManager=new UserManager(this);
+
+           //判断用户名是否存在；
+           if(userManager.findByName(name)){
+               //判断邮箱
+               if(isEmail(email)){
+                   //判断密码
+                   if(p1.equals(p2)){
+                       intent=new Intent(this, Register_Sucessful.class);
+                       startActivity(intent);
+                       User user=new User(name,email,p1);
+                       //将数据放入数据库
+                       userManager.add(user);
+                   }else{
+                       psw1.setText("");
+                       psw2.setText("");
+                       Toast.makeText(this,"两次密码不正确",Toast.LENGTH_LONG).show();
+                   }
                }else{
-                   intent=new Intent(this, Register_Sucessful.class);
-                   startActivity(intent);
-                   //将数据放入数据库
+                   Toast.makeText(this,"邮箱格式错误",Toast.LENGTH_LONG).show();
+                   reg_email.setText("");
                }
            }else{
-               Toast.makeText(this,"邮箱格式错误",Toast.LENGTH_LONG).show();
-               reg_email.setText("");
+               Toast.makeText(this,"用户名已存在，请重新输入",Toast.LENGTH_LONG).show();
+               reg_name.setText("");
            }
-
-       }
     }
     public static boolean isEmail(String email){
         if (null==email || "".equals(email)) return false;
