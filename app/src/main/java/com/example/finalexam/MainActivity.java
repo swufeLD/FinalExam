@@ -85,13 +85,14 @@ public class MainActivity extends AppCompatActivity  implements TabLayout.OnTabS
     public void onTabSelected(TabLayout.Tab tab) {
 
         if(tab.getText().toString().equals("热榜")){
-            //爬微博热搜
+             intent=new Intent(this,HotTop.class);
+             startActivity(intent);
         }
         if(tab.getText().toString().equals("吃瓜")){
               //校内信息发布
         }
         if(tab.getText().toString().equals("我的")){
-             //个人主页
+
         }
 
     }

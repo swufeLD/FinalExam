@@ -1,10 +1,14 @@
 package com.example.finalexam;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.net.UrlQuerySanitizer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,22 +20,27 @@ import  org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class HotTop extends AppCompatActivity implements Runnable {
+public class HotTop extends AppCompatActivity implements Runnable, AdapterView.OnItemClickListener {
          public static final String TAG ="HotTop";
+         List<String> href;
          List<HashMap<String,String>> hreflist;
           List<HashMap<String,String>>titlelist;
           List<HashMap<String,String>> msg_title;
          Handler handler;
          ListView listView;
+         Uri uri;
+    Intent intent;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        setContentView(R.layout.mylist);
 
        listView=findViewById(R.id.mylist);
+       listView.setOnItemClickListener(this);
 
        Thread t=new Thread(this);
        t.start();
@@ -57,8 +66,9 @@ public class HotTop extends AppCompatActivity implements Runnable {
 
         hreflist=new ArrayList<HashMap<String, String>>();
         titlelist=new ArrayList<HashMap<String, String>>();
+        href=new ArrayList<>();
 
-        int count=0;
+        int count=1;
 
         try {
             doc= (Document) Jsoup.connect(url).get();
@@ -81,6 +91,7 @@ public class HotTop extends AppCompatActivity implements Runnable {
             map2.put("content",h);
             hreflist.add(map2);
 
+            href.add(h);
             count++;
 
             Log.i(TAG, "run: href"+h);
@@ -91,4 +102,14 @@ public class HotTop extends AppCompatActivity implements Runnable {
         msg.obj=titlelist;
         handler.sendMessage(msg);
     }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        uri=Uri.parse(href.get(position));
+        Log.i(TAG, "onItemClick: "+ uri);
+        //Uri.parse("http://www.baidu.com")
+        intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
+
 }

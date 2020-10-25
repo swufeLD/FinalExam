@@ -1,6 +1,7 @@
 package com.example.finalexam;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,22 @@ public class MyListAdapter extends ArrayAdapter {
 
         index.setText(map.get("index"));
         content.setText(map.get("content"));
+
+        if(map.get("index").equals("1")){
+                index.setTextColor(Color.rgb(255,0,0));
+                index.setTextSize((float) 23);
+                index.getPaint().setFakeBoldText(true);
+        }
+        if(map.get("index").equals("2")){
+            index.setTextColor(Color.rgb(255,0,0));
+            index.setTextSize((float) 23);
+            index.getPaint().setFakeBoldText(true);
+        }
+        if(map.get("index").equals("3")){
+            index.setTextColor(Color.rgb(	255,0,0));
+            index.setTextSize((float) 23);
+            index.getPaint().setFakeBoldText(true);
+        }
 
         return itemView;
     }
