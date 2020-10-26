@@ -92,7 +92,8 @@ public class MainActivity extends AppCompatActivity  implements TabLayout.OnTabS
               //校内信息发布
         }
         if(tab.getText().toString().equals("我的")){
-
+            intent=new Intent(this,Personal.class);
+            startActivity(intent);
         }
 
     }
