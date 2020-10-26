@@ -10,7 +10,7 @@
         android:id="@+id/imageView"
         android:layout_width="400dp"
         android:layout_height="200dp"
-        tools:srcCompat="@mipmap/bg" />
+        android:background="@mipmap/bg" />
 
     <TextView
         android:id="@+id/textView8"

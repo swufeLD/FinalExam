@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Personal extends AppCompatActivity implements View.OnClickListener {
+    public  static  final String TAG="Personal";
 
     ImageButton imagebtn;
     Button edit;
@@ -33,6 +34,12 @@ public class Personal extends AppCompatActivity implements View.OnClickListener 
     String i;
 
     SharedPreferences share;
+
+    TextView tv1;
+    TextView tv2;
+    TextView tv3;
+    TextView tv4;
+    TextView tv5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +61,24 @@ public class Personal extends AppCompatActivity implements View.OnClickListener 
         share=getSharedPreferences("login", Activity.MODE_PRIVATE);
         n=share.getString("username","");
 
-        name.setText(n);
+        name.setText("用户名:"+n);
+        getInfo();
+        initview();
     }
+public  void initview(){
+        tv1=findViewById(R.id.tv1);
+        tv2=findViewById(R.id.tv2);
+        tv3=findViewById(R.id.tv3);
+        tv4=findViewById(R.id.tv4);
+        tv5=findViewById(R.id.tv5);
 
+        tv1.setOnClickListener(this);
+        tv2.setOnClickListener(this);
+        tv3.setOnClickListener(this);
+        tv4.setOnClickListener(this);
+        tv5.setOnClickListener(this);
+
+}
     @Override
     public void onClick(View view) {
         if(view.getId()==R.id.imageBtn){
@@ -66,6 +88,22 @@ public class Personal extends AppCompatActivity implements View.OnClickListener 
             intent=new Intent(this,EditorPerson.class);
             startActivity(intent);
         }
+        if(view.getId()==R.id.tv4){
+            //修改密码页
+
+        }
+        if(view.getId()==R.id.tv1){
+            //收藏页
+
+        }
+        if(view.getId()==R.id.tv2){
+            //点赞页
+
+        }
+        if(view.getId()==R.id.tv3){
+            //关注页
+
+        }
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -74,16 +112,31 @@ public class Personal extends AppCompatActivity implements View.OnClickListener 
             Bundle bdl=data.getExtras();
              b=bdl.getString("birth");
              a=bdl.getString("age");
-             s=bdl.getString("age");
+             s=bdl.getString("sex");
              g=bdl.getString("grade");
              i=bdl.getString("introduce");
-
-             birth.setText(b);
-             age.setText(a);
-             sex.setText(s);
-             grade.setText(g);
-             introduce.setText(i);
+           getInfo();
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+    public boolean getInfo(){
+        SharedPreferences getShare=getSharedPreferences("person",Activity.MODE_PRIVATE);
+        b=getShare.getString("birth","");
+        a=getShare.getString("age","");
+        s=getShare.getString("sex","");
+        g=getShare.getString("grade","");
+        i=getShare.getString("introduce","");
+
+        birth.setText("出生日期 : "+b);
+        age.setText("年龄 : "+a);
+        sex.setText("性别 : "+s);
+        grade.setText("年级 : "+g);
+        introduce.setText("个性标签 : "+i);
+
+        return  true;
+    }
+    protected void onResume() {
+                super.onResume();
+                getInfo();
     }
 }

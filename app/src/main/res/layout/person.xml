@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/border">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/border">
 
         <LinearLayout
             android:layout_width="200dp"
@@ -21,8 +23,8 @@
                 android:id="@+id/imageBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:srcCompat="@tools:sample/avatars"
-                android:layout_marginTop="50dp"/>
+                 android:background="@mipmap/gua"
+                android:layout_marginTop="40dp"/>
 
         </LinearLayout>
 
@@ -77,8 +79,7 @@
                 android:layout_height="wrap_content"
                 android:text="个人信息编辑>>>"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="120dp"
-                android:textColor="#87CEFA"
+                android:layout_marginLeft="100dp"
                 android:textSize="10dp"
                 android:background="@android:color/transparent"/>
         </LinearLayout>
@@ -89,11 +90,149 @@
         android:id="@+id/introduce"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="自我价绍一下吧~"
-        android:textSize="18dp"/>
+        android:text="个性标签"
+        android:textSize="18dp"
+        android:layout_marginBottom="30dp"/>
 
-    <ListView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="@drawable/border">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/shoucang" />
+
+            <TextView
+
+                android:id="@+id/tv1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="收藏"
+                android:textSize="23dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="@drawable/border">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/dianzan" />
+
+            <TextView
+
+                android:id="@+id/tv2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="点赞"
+                android:textSize="23dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="@drawable/border">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/guanzhu" />
+
+            <TextView
+
+                android:id="@+id/tv3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="关注"
+                android:textSize="23dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="@drawable/border">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/psw" />
+
+            <TextView
+
+                android:id="@+id/tv4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="修改密码"
+                android:textSize="23dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="@drawable/border">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/shezhi" />
+
+            <TextView
+
+                android:id="@+id/tv5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="设置"
+                android:textSize="23dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 
 </LinearLayout>

@@ -1,7 +1,9 @@
 package com.example.finalexam;
 
+import android.app.Activity;
 import android.app.Person;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -56,6 +58,25 @@ public class EditorPerson extends AppCompatActivity implements View.OnClickListe
         bdl.putString("sex",s);
         bdl.putString("grade",g);
         bdl.putString("introduce",i);
+
+        SharedPreferences sharedPreferences=getSharedPreferences("person", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        if(!b.equals("")){
+            editor.putString("birth",b);
+        }
+       if(!a.equals("")){
+           editor.putString("age",a);
+       }
+       if(!s.equals("")){
+           editor.putString("sex",s);
+       }
+       if(!g.equals("")){
+           editor.putString("grade",g);
+       }
+      if(!i.equals("")){
+          editor.putString("introduce",i);
+      }
+        editor.apply();
 
         intent.putExtras(bdl);
         setResult(2,intent);
