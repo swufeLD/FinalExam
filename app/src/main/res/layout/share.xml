@@ -19,7 +19,7 @@
         android:layout_marginLeft="5dp"/>
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="2"
@@ -40,7 +40,7 @@
         android:layout_marginLeft="5dp"/>
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/editText2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="10"
@@ -51,7 +51,8 @@
 
     <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:id="@+id/rg">
 
         <RadioButton
             android:id="@+id/radioButton3"
@@ -70,7 +71,7 @@
             android:textSize="18dp"/>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/gua_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="提交"

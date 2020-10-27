@@ -1,5 +1,13 @@
 apply plugin: 'com.android.application'
 
+apply plugin: 'com.mob.sdk'
+
+MobSDK {
+    appKey "替换为mob官方申请的appkey"
+    appSecret "替换为mob官方申请的appkey对应的appSecret"
+    SMSSDK {}
+}
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"

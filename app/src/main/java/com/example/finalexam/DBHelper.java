@@ -11,6 +11,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private  static final int version=1;
     private  static final String DB_NAME="FinalExam.db";
     public   static final String User="User";
+    public  static final String Gua_EditorMessage="GuaMessage";
 
     public DBHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -23,6 +24,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table "+User+"(ID INTEGER PRIMARY KEY AUTOINCREMENT, UserName  text Unique,UserEmail text,UserPassword text)");
+        db.execSQL("create table "+Gua_EditorMessage+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,Author text,Date text,Title text,Content text,Count Integer,Comment text)");
     }
 
     @Override

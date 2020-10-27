@@ -89,8 +89,8 @@ public  void initview(){
             startActivity(intent);
         }
         if(view.getId()==R.id.tv4){
-            //修改密码页
-
+            intent=new Intent(this,EditorPsw.class);
+            startActivity(intent);
         }
         if(view.getId()==R.id.tv1){
             //收藏页

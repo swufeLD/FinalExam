@@ -11,6 +11,10 @@ public class UserManager {
     private DBHelper dbHelper;
     private String usertable;
 
+    int id;
+    String email;
+
+
     public UserManager(Context context){
         dbHelper=new DBHelper(context);
         usertable=DBHelper.User;
@@ -46,6 +50,24 @@ public class UserManager {
             psw=cursor.getString(cursor.getColumnIndex("UserPassword"));
         }
         return psw;
+    }
+    public void updata(String username,String password){
+
+        SQLiteDatabase db=dbHelper.getWritableDatabase();
+        Cursor cursor=db.query(usertable,null,
+                "UserName=?",new String[]{username},null,null,null);
+        if(cursor!=null && cursor.moveToFirst()){
+             id=cursor.getInt(cursor.getColumnIndex("ID"));
+             email=cursor.getString(cursor.getColumnIndex("UserEmail"));
+        }
+        ContentValues values = new ContentValues();
+        values.put("ID",id);
+        values.put("UserName",username);
+        values.put("UserEmail",email);
+        values.put("UserPassword",password);
+
+        db.update(usertable,values,"ID=?",new String[]{String.valueOf(id)});
+        db.close();
     }
 
 }
