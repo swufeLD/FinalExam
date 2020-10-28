@@ -1,6 +1,8 @@
 package com.example.finalexam;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,8 +38,8 @@ public class ShowGua extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.showgua);
-
         initView();
+        getInfo();
     }
     public void initView(){
         title=findViewById(R.id.title);
@@ -58,23 +60,6 @@ public class ShowGua extends AppCompatActivity implements View.OnClickListener {
         pinglun.setOnClickListener(this);
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-         //data=getIntent();
-        if(requestCode==1 && resultCode==2) {
-            Bundle bundle = data.getExtras();
-            gettitle=bundle.getString("title","");
-            getcontent=bundle.getString("content","");
-            getauthor=bundle.getString("author","");
-            getdate=bundle.getString("date","");
-            Log.i(TAG, "onActivityResult: "+gettitle);
-            title.setText(gettitle);
-            content.setText(getcontent);
-            author.setText(getauthor);
-            date.setText(getdate);
-            getInfo();
-        }
-    }
     @Override
     public void onClick(View view) {
 
@@ -84,15 +69,15 @@ public class ShowGua extends AppCompatActivity implements View.OnClickListener {
         getInfo();
     }
     public void getInfo(){
-        Bundle bundle =new Bundle();
-        gettitle=bundle.getString("title","");
-        getcontent=bundle.getString("content","");
-        getauthor=bundle.getString("author","");
-        getdate=bundle.getString("date","");
+       SharedPreferences sharedPreferences=getSharedPreferences("Gua", Activity.MODE_PRIVATE);
+        gettitle=sharedPreferences.getString("title","");
+        getcontent=sharedPreferences.getString("content","");
+        getauthor=sharedPreferences.getString("author","");
+        getdate=sharedPreferences.getString("date","");
         Log.i(TAG, "onActivityResult: "+gettitle);
-        title.setText(gettitle);
-        content.setText(getcontent);
-        author.setText(getauthor);
-        date.setText(getdate);
+        title.setText("话题：  "+gettitle);
+        content.setText("内容：  "+getcontent);
+        author.setText("作者： "+getauthor);
+        date.setText("时间： "+getdate);
     }
 }

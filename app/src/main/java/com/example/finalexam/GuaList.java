@@ -1,6 +1,8 @@
 package com.example.finalexam;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -63,24 +65,20 @@ public void init(){
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-
-             intent=new Intent(GuaList.this,ShowGua.class);
-      //  Log.i(TAG, "onItemClick: "+id);
-       // Log.i(TAG, "onItemClick: "+position);
-              Bundle bdl=new Bundle();
+        SharedPreferences sharedPreferences=getSharedPreferences("Gua", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
 
               String title=guaMessages.get(position).getTitle();
               String content=guaMessages.get(position).getContent();
               String author=guaMessages.get(position).getAuthor();
               String date=guaMessages.get(position).getDate();
               Log.i(TAG, "onItemClick: "+title);
-              bdl.putString("title",title);
-              bdl.putString("content",content);
-              bdl.putString("author",author);
-              bdl.putString("date",date);
-
-              intent.putExtras(bdl);
-              setResult(2,intent);
-              finish();
+             editor.putString("title",title);
+             editor.putString("content",content);
+             editor.putString("author",author);
+             editor.putString("date",date);
+             editor.apply();
+             intent=new Intent(this,ShowGua.class);
+             startActivity(intent);
     }
 }
