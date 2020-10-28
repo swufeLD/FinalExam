@@ -31,14 +31,15 @@ public class GuaListAdapter extends ArrayAdapter {
                     false);
         }
         Map<String, String> map = (Map<String, String>) getItem(position);
-        List<String> list=(ArrayList<String>)getItem(position);
+      //  List<String> list=(ArrayList<String>)getItem(position);
         TextView index = (TextView) itemView.findViewById(R.id.index);
         TextView content = (TextView) itemView.findViewById(R.id.content);
         TextView count=itemView.findViewById(R.id.count);
 
         index.setText(map.get("index"));
         content.setText(map.get("content"));
-        content.setText(list.get(position));
+        content.setTextSize(20);
+        count.setText("热度"+" "+map.get("count"));
 
         if(map.get("index").equals("1")){
             index.setTextColor(Color.rgb(255,0,0));
