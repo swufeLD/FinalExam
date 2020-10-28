@@ -2,30 +2,30 @@ package com.example.finalexam;
 
 public class GuaMessage {
     private int id;
-    private String author;
-    private String date;
-    private String title;
-    private String content;
-    private int count;
-    private String comment;
+    private String Author;
+    private String Date;
+    private String Title;
+    private String Content;
+    private int Count;
+    private String Comment;
 
     public GuaMessage() {
         super();
-        author="";
-        date="";
-        title="";
-        comment="";
-        content="";
-        count=0;
+        Author="";
+        Date="";
+        Title="";
+        Content="";
+        Count=0;
+        Comment="";
     }
     public  GuaMessage(String author,String date,String title,String content,int count,String comment) {
         super();
-        this.author=author;
-        this.date=date;
-        this.title=title;
-        this.content=content;
-        this.count=count;
-        this.comment=comment;
+        this.Author=author;
+        this.Date=date;
+        this.Title=title;
+        this.Content=content;
+        this.Count=count;
+        this.Comment=comment;
     }
     public int getId(){
         return id;
@@ -34,39 +34,40 @@ public class GuaMessage {
         this.id=id;
     }
     public String getAuthor(){
-        return author;
+        return Author;
     }
     public void setAuthor(String author){
-        this.author=author;
+        this.Author=author;
     }
     public String getDate(){
-        return date;
+        return Date;
     }
     public void setDate(String date){
-        this.date=date;
+        this.Date=date;
     }
     public String getTitle(){
-        return title;
+        return Title;
     }
     public void setTitle(String title){
-        this.title=title;
+        this.Title=title;
     }
     public String getContent(){
-        return content;
+        return Content;
     }
     public void setContent(String content){
-        this.content=content;
-    }
-    public String getComment(){
-        return comment;
-    }
-    public void setComment(String comment){
-        this.comment=comment;
+        this.Content=content;
     }
     public int getCount(){
-        return count;
+        return Count;
     }
     public void setCount(int count){
-        this.count=count;
+        this.Count=count;
     }
+    public String getComment(){
+        return Comment;
+    }
+    public void setComment(String comment){
+        this.Comment=comment;
+    }
+
 }
