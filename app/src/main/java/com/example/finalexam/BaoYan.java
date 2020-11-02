@@ -54,6 +54,8 @@ public class BaoYan extends Fragment implements View.OnClickListener {
         if(view.getId()==R.id.b3){
             b3.setTextColor(Color.rgb(255,140,0));
             count=3;
+            intent=new Intent(getActivity(),BYShow_history.class);
+            startActivity(intent);
         }
         if(view.getId()==R.id.imageButton2){
             intent=new Intent(getActivity(), Baoyan_Editor.class);

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,8 +41,9 @@ public class Gua_PingLun extends AppCompatActivity implements View.OnClickListen
     }
     @Override
     public void onClick(View view) {
-        String comment=author+"*"+e.getText().toString();
+        String comment=author+"@"+e.getText().toString();
         GuaManager guaManager=new GuaManager(this);
         guaManager.insertcomment(Integer.parseInt(id),comment);
+        Toast.makeText(this,"保存成功",Toast.LENGTH_LONG).show();
     }
 }
