@@ -19,7 +19,7 @@ import java.util.Map;
 public class GuaListAdapter extends ArrayAdapter {
     private static final String TAG = "MyAdapter";
 
-    public GuaListAdapter(@NonNull Context context, int resource, ArrayList<HashMap<String,String>> list, List<String> list1) {
+    public GuaListAdapter(@NonNull Context context, int resource, ArrayList<HashMap<String,String>> list) {
         super(context, resource,list);
     }
     @Override

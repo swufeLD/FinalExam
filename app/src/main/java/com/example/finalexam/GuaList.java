@@ -54,7 +54,7 @@ public void init(){
             k++;
             Log.i(TAG, "init: "+map);
         }
-        GuaListAdapter guaListAdapter=new GuaListAdapter(this,R.layout.gualist_item,listmap,list);
+        GuaListAdapter guaListAdapter=new GuaListAdapter(this,R.layout.gualist_item,listmap);
         listView.setAdapter(guaListAdapter);
 }
     @Override
@@ -67,16 +67,21 @@ public void init(){
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
         SharedPreferences sharedPreferences=getSharedPreferences("Gua", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
-
+              int index =guaMessages.get(position).getId();
               String title=guaMessages.get(position).getTitle();
               String content=guaMessages.get(position).getContent();
               String author=guaMessages.get(position).getAuthor();
               String date=guaMessages.get(position).getDate();
+              String comment=guaMessages.get(position).getComment();
+
               Log.i(TAG, "onItemClick: "+title);
+
+              editor.putString("id",String.valueOf(index));
              editor.putString("title",title);
              editor.putString("content",content);
              editor.putString("author",author);
              editor.putString("date",date);
+             editor.putString("comment",comment);
              editor.apply();
              intent=new Intent(this,ShowGua.class);
              startActivity(intent);

@@ -13,6 +13,8 @@ public class GuaManager {
     private GuaDBHelper dbHelper;
     private String usertable;
 
+    String s;
+
     public GuaManager(Context context){
         dbHelper=new GuaDBHelper(context);
         usertable=GuaDBHelper.Gua_EditorMessage;
@@ -54,5 +56,17 @@ public class GuaManager {
         }
         db.close();
         return list;
+    }
+    public void insertcomment(int id,String comment){
+        SQLiteDatabase db=dbHelper.getWritableDatabase();
+        Cursor cursor=db.query(usertable,null,"ID=?",new String[]{String.valueOf(id)},null,null,null);
+        if(cursor!=null && cursor.moveToFirst()){
+           s= cursor.getString(cursor.getColumnIndex("Comment"));
+        }
+        s=s+"#"+comment;
+        ContentValues values = new ContentValues();
+        values.put("Comment",s);
+        db.update(usertable,values,"ID=?", new String[]{String.valueOf(id)});
+        db.close();
     }
 }

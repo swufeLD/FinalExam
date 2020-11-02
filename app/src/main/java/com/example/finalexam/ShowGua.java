@@ -14,6 +14,10 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class ShowGua extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG="ShoewGus";
 
@@ -33,8 +37,10 @@ public class ShowGua extends AppCompatActivity implements View.OnClickListener {
     String getcontent;
     String getauthor;
     String getdate;
+    String getid;
+    String getcomment;
 
-
+ Intent intent;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.showgua);
@@ -58,11 +64,30 @@ public class ShowGua extends AppCompatActivity implements View.OnClickListener {
         shoucang.setOnClickListener(this);
         dianzan.setOnClickListener(this);
         pinglun.setOnClickListener(this);
+
+        showcomment();
     }
 
     @Override
     public void onClick(View view) {
-
+        if(view.getId()==R.id.guanzhu){
+            GuanZhu guanZhu=new GuanZhu(getauthor,getdate);
+            GuanZhuManager guanZhuManager=new GuanZhuManager(this);
+            guanZhuManager.add(guanZhu);
+        }
+        if(view.getId()==R.id.shoucang){
+            ShowCang showCang=new ShowCang(getauthor,getdate,gettitle,getcontent);
+            ShouCangManager shouCangManager=new ShouCangManager(this);
+            shouCangManager.add(showCang);
+        }
+       if(view.getId()==R.id.pinglun){
+           intent=new Intent(this,Gua_PingLun.class);
+           intent.putExtra("title",gettitle);
+           intent.putExtra("Content",getcontent);
+           intent.putExtra("id",getid);
+           intent.putExtra("author",getauthor);
+           startActivity(intent);
+    }
     }
    protected void onResume() {
         super.onResume();
@@ -70,14 +95,21 @@ public class ShowGua extends AppCompatActivity implements View.OnClickListener {
     }
     public void getInfo(){
        SharedPreferences sharedPreferences=getSharedPreferences("Gua", Activity.MODE_PRIVATE);
+        getid=sharedPreferences.getString("id","");
         gettitle=sharedPreferences.getString("title","");
         getcontent=sharedPreferences.getString("content","");
         getauthor=sharedPreferences.getString("author","");
         getdate=sharedPreferences.getString("date","");
         Log.i(TAG, "onActivityResult: "+gettitle);
+        getcomment=sharedPreferences.getString("comment","");
+
         title.setText("话题：  "+gettitle);
         content.setText("内容：  "+getcontent);
         author.setText("作者： "+getauthor);
         date.setText("时间： "+getdate);
+    }
+    public void showcomment(){
+        String temp[]=getcomment.split("#");
+        List<HashMap<String,String>> list=new ArrayList<>();
     }
 }
