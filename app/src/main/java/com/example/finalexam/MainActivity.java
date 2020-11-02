@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity  implements TabLayout.OnTabS
         updata();
         vp=findViewById(R.id.vp);
         tab2=findViewById(R.id.tab2);
-       tab1=findViewById(R.id.tab1);
+        tab1=findViewById(R.id.tab1);
        for(int i=0;i<list_title.size();i++){
            //还差与fragment相连接；
            tab1.addTab(tab1.newTab().setText(list_title.get(i)));
@@ -89,7 +89,8 @@ public class MainActivity extends AppCompatActivity  implements TabLayout.OnTabS
              startActivity(intent);
         }
         if(tab.getText().toString().equals("吃瓜")){
-              //校内信息发布
+            intent=new Intent(this,GuaList.class);
+            startActivity(intent);
         }
         if(tab.getText().toString().equals("我的")){
             intent=new Intent(this,Personal.class);
