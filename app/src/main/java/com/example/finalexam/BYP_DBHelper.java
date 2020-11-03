@@ -6,23 +6,23 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-public class BaoYan_DBHelper extends SQLiteOpenHelper {
+public class BYP_DBHelper extends SQLiteOpenHelper {
     private  static final int version=1;
-    private  static final String DB_NAME="BaoYanDB.db";
-    public   static final String BaoYan="baoyan";
+    private  static final String DB_NAME="BYPDB.db";
+    public   static final String BYP="byp";
 
 
-    public BaoYan_DBHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+    public BYP_DBHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
 
     }
-    public BaoYan_DBHelper(Context context){
+    public BYP_DBHelper(Context context){
 
         super(context,DB_NAME,null,version);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table "+ BaoYan +"(ID INTEGER PRIMARY KEY AUTOINCREMENT, Name  text , StuId text Unique, Grade text,College text, Major text)");
+        db.execSQL("create table "+ BYP +"(ID INTEGER PRIMARY KEY AUTOINCREMENT, Name  text , StuId text Unique,Target text,TargetMajor text,Get text)");
     }
 
     @Override

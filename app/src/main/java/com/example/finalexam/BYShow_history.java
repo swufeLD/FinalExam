@@ -1,5 +1,7 @@
 package com.example.finalexam;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,17 +9,24 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class BYShow_history extends AppCompatActivity implements View.OnClickListener , AdapterView.OnItemSelectedListener {
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+
+public class BYShow_history extends AppCompatActivity implements View.OnClickListener , AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
     public static final String TAG="BYShow_history ";
 
     Spinner sp1;
     Spinner sp2;
     Button b1;
+    ListView blist;
 
     String arr1[];
     String arr2[];
@@ -27,6 +36,10 @@ public class BYShow_history extends AppCompatActivity implements View.OnClickLis
     int index1;
     int index2;
 
+    ArrayList<BaoYanMessage> baoYanMessages;
+    ArrayList<HashMap<String,String>> list;
+
+    Intent intent;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.by_history);
@@ -34,10 +47,12 @@ public class BYShow_history extends AppCompatActivity implements View.OnClickLis
         sp1=findViewById(R.id.spinner);
         sp2=findViewById(R.id.spinner2);
         b1=findViewById(R.id.button);
+        blist=findViewById(R.id.blist);
 
         b1.setOnClickListener(this);
         sp1.setOnItemSelectedListener(this);
         sp2.setOnItemSelectedListener(this);
+        blist.setOnItemClickListener(this);
 
         arr1= new String[]{"请选择年份", "2020", "2019", "2018", "2017", "2016"};
         arr2= new String[]{"请选择学院", "金融学院", "经济信息工程学院", "数学学院", "体育学院", "马克思主义学院"};
@@ -52,16 +67,45 @@ public class BYShow_history extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
+        list=new ArrayList<HashMap<String, String>>();
         //查询数据库并显示
         if(index1==0 && index2==0){
 
+            SimpleDateFormat df = new SimpleDateFormat("yyyy");
+            String date=df.format(new Date());
+            baoYanMessages=new ArrayList<BaoYanMessage>();
+            BaoYanManager baoYanManager=new BaoYanManager(this);
+            baoYanMessages= baoYanManager.list2(date);
+
         }else if(index1==0 && index2!=0){
+
+            baoYanMessages=new ArrayList<BaoYanMessage>();
+            BaoYanManager baoYanManager=new BaoYanManager(this);
+            baoYanMessages= baoYanManager.list(a2);
 
         }else if(index2==0 && index1!=0){
 
+            baoYanMessages=new ArrayList<BaoYanMessage>();
+            BaoYanManager baoYanManager=new BaoYanManager(this);
+            baoYanMessages= baoYanManager.list2(a1);
+
         }else{
 
+            baoYanMessages=new ArrayList<BaoYanMessage>();
+            BaoYanManager baoYanManager=new BaoYanManager(this);
+            baoYanMessages= baoYanManager.list3(a1,a2);
         }
+        //建立适配器
+        for(int i=0;i<baoYanMessages.size();i++){
+            HashMap<String,String> map=new HashMap<>();
+            map.put("college",baoYanMessages.get(i).getCollege());
+            map.put("major",baoYanMessages.get(i).getMajor());
+            map.put("id",baoYanMessages.get(i).getStuId());
+            map.put("name",baoYanMessages.get(i).getName());
+            list.add(map);
+        }
+        BaoYanAdapter baoYanAdapter=new BaoYanAdapter(this,R.layout.baoyan_item,list);
+        blist.setAdapter(baoYanAdapter);
     }
 
     @Override
@@ -81,4 +125,13 @@ public class BYShow_history extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        String index =baoYanMessages.get(position).getStuId();
+        BYPManager bypManager=new BYPManager(this);
+        BYPMessage bypMessage=new BYPMessage();
+        bypMessage=bypManager.GetBYP(index);
+
+
+    }
 }
