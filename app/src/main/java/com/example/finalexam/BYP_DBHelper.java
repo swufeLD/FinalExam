@@ -22,7 +22,7 @@ public class BYP_DBHelper extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table "+ BYP +"(ID INTEGER PRIMARY KEY AUTOINCREMENT, Name  text , StuId text Unique,Target text,TargetMajor text,Get text,Contact text)");
+        db.execSQL("create table "+ BYP +"(ID INTEGER PRIMARY KEY AUTOINCREMENT, Name  text , StuId text Unique,Score text,Sort text, Target text,TargetMajor text,Get text,Contact text)");
     }
 
     @Override

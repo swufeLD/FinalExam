@@ -132,6 +132,18 @@ public class BYShow_history extends AppCompatActivity implements View.OnClickLis
         BYPMessage bypMessage=new BYPMessage();
         bypMessage=bypManager.GetBYP(index);
 
+        intent=new Intent(this,ShowBYP.class);
+        intent.putExtra("name",bypMessage.getName());
+        intent.putExtra("grade",baoYanMessages.get(position).getGrade());
+        intent.putExtra("college",baoYanMessages.get(position).getCollege());
+        intent.putExtra("major",baoYanMessages.get(position).getMajor() );
+        intent.putExtra("score",bypMessage.getScore());
+        intent.putExtra("sort",bypMessage.getSort());
+        intent.putExtra("contact",bypMessage.getContact());
+        intent.putExtra("tcollege",bypMessage.getTarget());
+        intent.putExtra("tmajor",bypMessage.getTargetMajor());
+        intent.putExtra("get",bypMessage.getGet());
+        startActivity(intent);
 
     }
 }

@@ -8,6 +8,9 @@ public class BYPMessage {
     private String TargetMajor;
     private String Get;
     private String Contact;
+    private String Score;
+    private String Sort;
+
 
     public BYPMessage() {
         super();
@@ -17,8 +20,10 @@ public class BYPMessage {
         TargetMajor="";
         Get="";
         Contact="";
+        Score="";
+        Sort="'";
     }
-    public  BYPMessage(String name,String stuid ,String target,String targetMajor,String get,String contact) {
+    public  BYPMessage(String name,String stuid ,String target,String targetMajor,String get,String contact,String score,String sort) {
         super();
         this.Name=name;
         this.StuId=stuid;
@@ -26,6 +31,8 @@ public class BYPMessage {
         this.TargetMajor=targetMajor;
         this.Get=get;
         this.Contact=contact;
+        this.Sort=sort;
+        this.Score=score;
     }
     public int getId(){
         return id;
@@ -68,5 +75,17 @@ public class BYPMessage {
     }
     public void setContact(String contact){
         this.Contact=contact;
+    }
+    public String getScore(){
+        return Score;
+    }
+    public void setScore(String score){
+        this.Score=score;
+    }
+    public String getSort(){
+        return Sort;
+    }
+    public void setSort(String sort){
+        this.Sort=sort;
     }
 }

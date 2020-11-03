@@ -26,6 +26,8 @@ public class BYPManager {
             bypMessage.setTargetMajor(cursor.getString(cursor.getColumnIndex("TargetMajor")));
             bypMessage.setGet(cursor.getString(cursor.getColumnIndex("Get")));
             bypMessage.setContact(cursor.getString(cursor.getColumnIndex("Contact")));
+            bypMessage.setScore(cursor.getString(cursor.getColumnIndex("Score")));
+            bypMessage.setSort(cursor.getString(cursor.getColumnIndex("Sort")));
             cursor.close();
         }
         db.close();
