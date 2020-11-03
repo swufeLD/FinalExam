@@ -52,13 +52,13 @@ public class MainActivity extends AppCompatActivity  implements TabLayout.OnTabS
    }
    public void updata(){
        list_title=new ArrayList<>();
+       list_title.add("保研");
+       list_title.add("考研");
+       list_title.add("就业");
+       list_title.add("出国");
        list_title.add("活动");
        list_title.add("社团");
        list_title.add("兼职");
-       list_title.add("考研");
-       list_title.add("保研");
-       list_title.add("就业");
-       list_title.add("出国");
        list_title.add("实习");
        list_title.add("志愿者");
        list_title.add("社会实践");

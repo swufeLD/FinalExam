@@ -9,7 +9,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BaoYan extends Fragment implements View.OnClickListener {
 
@@ -19,6 +24,9 @@ public class BaoYan extends Fragment implements View.OnClickListener {
     ListView list;
     ImageButton image;
     Intent intent;
+
+    ArrayList<EdgeBYP> edgeBYPArrayList;
+    ArrayList<HashMap<String,String>> arrayList;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,6 +54,9 @@ public class BaoYan extends Fragment implements View.OnClickListener {
         if(view.getId()==R.id.b1){
             b1.setTextColor(Color.rgb(255,140,0));
             count=1;
+            getEdge();
+            EdgeBYPAdapter edgeBYPAdapter=new EdgeBYPAdapter(getActivity(),R.layout.edge_item,arrayList);
+            list.setAdapter(edgeBYPAdapter);
         }
         if(view.getId()==R.id.b2){
            b2.setTextColor(Color.rgb(255,140,0));
@@ -63,5 +74,16 @@ public class BaoYan extends Fragment implements View.OnClickListener {
             startActivity(intent);
         }
     }
-
+    public  void getEdge(){
+        edgeBYPArrayList=new ArrayList<EdgeBYP>();
+        arrayList=new ArrayList<HashMap<String, String>>();
+        EdgeBYPManager edgeBYPManager=new EdgeBYPManager(getActivity());
+        edgeBYPArrayList=edgeBYPManager.list(35);
+        for(int i=0;i<edgeBYPArrayList.size();i++){
+            HashMap<String,String> map=new HashMap<>();
+            map.put("index",edgeBYPArrayList.get(i).getTitle());
+            map.put("content",edgeBYPArrayList.get(i).getContent());
+            arrayList.add(map);
+        }
+}
 }

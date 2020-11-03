@@ -42,7 +42,7 @@ public void init(){
 
         GuaManager guaManager=new GuaManager(this);
         guaMessages=guaManager.list(35);
-    Log.i(TAG, "init: "+guaMessages);
+       Log.i(TAG, "init: "+guaMessages);
         int k=1;
         for(int i=0;i<guaMessages.size();i++){
             HashMap<String,String> map=new HashMap<String, String>();
