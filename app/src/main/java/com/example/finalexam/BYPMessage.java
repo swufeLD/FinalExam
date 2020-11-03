@@ -7,6 +7,7 @@ public class BYPMessage {
     private String Target;
     private String TargetMajor;
     private String Get;
+    private String Contact;
 
     public BYPMessage() {
         super();
@@ -15,14 +16,16 @@ public class BYPMessage {
         Target="";
         TargetMajor="";
         Get="";
+        Contact="";
     }
-    public  BYPMessage(String name,String stuid ,String target,String targetMajor,String get) {
+    public  BYPMessage(String name,String stuid ,String target,String targetMajor,String get,String contact) {
         super();
         this.Name=name;
         this.StuId=stuid;
         this.Target=target;
         this.TargetMajor=targetMajor;
         this.Get=get;
+        this.Contact=contact;
     }
     public int getId(){
         return id;
@@ -59,5 +62,11 @@ public class BYPMessage {
     }
     public void setGet(String get){
         this.Get=get;
+    }
+    public String getContact(){
+        return Contact;
+    }
+    public void setContact(String contact){
+        this.Contact=contact;
     }
 }
