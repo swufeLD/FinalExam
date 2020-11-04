@@ -48,6 +48,7 @@ public class ShowGua extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.showgua);
         initView();
         getInfo();
+        showcomment();
     }
 
     public void initView() {
@@ -103,7 +104,7 @@ public class ShowGua extends AppCompatActivity implements View.OnClickListener {
         getInfo();
     }
 
-    public void getInfo() {
+   public void getInfo() {
         SharedPreferences sharedPreferences = getSharedPreferences("Gua", Activity.MODE_PRIVATE);
         getid = sharedPreferences.getString("id", "");
         gettitle = sharedPreferences.getString("title", "");
@@ -124,10 +125,11 @@ public class ShowGua extends AppCompatActivity implements View.OnClickListener {
             String temp[] = getcomment.split("#");
             ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
             for (int i = 0; i < temp.length; i++) {
-                String ss[] = temp[i].split("@");
+                String ss[] = temp[i].split("&");
+                Log.i(TAG, "showcomment: "+ss.length);
                 HashMap<String,String>map=new HashMap<>();
                 map.put("at",ss[0]);
-                map.put("et",ss[0]);
+                map.put("et",ss[1]);
                 list.add(map);
             }
             PingLunAdapter pingLunAdapter=new PingLunAdapter(this,R.layout.pinglun_item,list);

@@ -34,7 +34,7 @@ public class BYPManager {
     public BYPMessage GetBYP(String stuid){
         BYPMessage bypMessage=new BYPMessage();
         SQLiteDatabase db=dbHelper.getWritableDatabase();
-        Cursor cursor= db.query(usertable,null,"Stud=?", new String[]{stuid}, null, null, null);
+        Cursor cursor= db.query(usertable,null,"StuId=?", new String[]{stuid}, null, null, null);
         if(cursor!=null&& cursor.moveToFirst()){
             bypMessage.setId(cursor.getInt(cursor.getColumnIndex("ID")));
             bypMessage.setName(cursor.getString(cursor.getColumnIndex("Name")));

@@ -18,7 +18,7 @@ public class AddBaoYan extends AppCompatActivity {
 
         BYPMessage bypMessage=new BYPMessage("李四","41710079","西南财经大学","计算机","三好，优干，数模一等奖","QQ:1182522751","90","1/100");
         BYPMessage bypMessage1=new BYPMessage("张三","41610079","西南财经大学","计算机","三好，优干，数模一等奖","QQ:1182522751","90","1/100");
-        BYPMessage bypMessage2=new BYPMessage("小敏","41610069","西南财经大学","金融","三好，优干，数模一等奖,国创","QQ:1182522751","90","1/100");
+        BYPMessage bypMessage2=new BYPMessage("小敏","41610009","四川大学","金融","三好，优干，数模一等奖,国创","QQ:1182522751","90","1/100");
         BYPManager bypManager=new BYPManager(this );
         bypManager.add(bypMessage);
         bypManager.add(bypMessage1);

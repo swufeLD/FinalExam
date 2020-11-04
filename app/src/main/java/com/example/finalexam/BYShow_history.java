@@ -136,7 +136,8 @@ public class BYShow_history extends AppCompatActivity implements View.OnClickLis
         intent.putExtra("name",bypMessage.getName());
         intent.putExtra("grade",baoYanMessages.get(position).getGrade());
         intent.putExtra("college",baoYanMessages.get(position).getCollege());
-        intent.putExtra("major",baoYanMessages.get(position).getMajor() );
+        intent.putExtra("major",baoYanMessages.get(position).getMajor());
+        Log.i(TAG, "onItemClick: "+baoYanMessages.get(position).getMajor());
         intent.putExtra("score",bypMessage.getScore());
         intent.putExtra("sort",bypMessage.getSort());
         intent.putExtra("contact",bypMessage.getContact());

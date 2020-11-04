@@ -20,7 +20,7 @@ public class BaoYanManager {
         SQLiteDatabase db=dbHelper.getWritableDatabase();
         ContentValues values =new ContentValues();
 
-        values.put("Author",message.getName());
+        values.put("Name",message.getName());
         values.put("StuId",message.getStuId());
         values.put("Grade",message.getGrade());
         values.put("College",message.getCollege());

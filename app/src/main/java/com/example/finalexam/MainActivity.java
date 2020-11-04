@@ -1,6 +1,9 @@
 package com.example.finalexam;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -15,14 +18,14 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity  implements TabLayout.OnTabSelectedListener {
+public class MainActivity extends AppCompatActivity  implements TabLayout.OnTabSelectedListener  {
 
     TabLayout tab1;
     TabLayout tab2;
     List<String> list_title;
-    ViewPager2 vp;
+ //   ViewPager vp;
     Intent intent;
-
+    List<Fragment> list_fragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,13 +35,18 @@ public class MainActivity extends AppCompatActivity  implements TabLayout.OnTabS
     }
    public void initViews(){
         updata();
-        vp=findViewById(R.id.vp);
+      //  vp=findViewById(R.id.vp);
         tab2=findViewById(R.id.tab2);
         tab1=findViewById(R.id.tab1);
-       for(int i=0;i<list_title.size();i++){
+        for(int i=0;i<list_title.size();i++){
            //还差与fragment相连接；
            tab1.addTab(tab1.newTab().setText(list_title.get(i)));
        }
+
+      MyFragmentAdapter myFragmentAdapter=new MyFragmentAdapter(getSupportFragmentManager(),list_title,list_fragment);
+      // vp.setAdapter(myFragmentAdapter);
+      // tab1.setupWithViewPager(vp);
+
        tab2.addTab(tab2.newTab().setText("首页").setIcon(R.mipmap.zhu));
        tab2.addTab(tab2.newTab().setText("热榜").setIcon(R.mipmap.re));
        tab2.addTab(tab2.newTab().setText("吃瓜").setIcon(R.mipmap.gua));
@@ -48,6 +56,8 @@ public class MainActivity extends AppCompatActivity  implements TabLayout.OnTabS
        tab2.addOnTabSelectedListener(this);
        tab1.getTabAt(0).select();
        tab2.getTabAt(0).select();
+
+
 
    }
    public void updata(){
@@ -62,6 +72,11 @@ public class MainActivity extends AppCompatActivity  implements TabLayout.OnTabS
        list_title.add("实习");
        list_title.add("志愿者");
        list_title.add("社会实践");
+
+       list_fragment=new ArrayList<>();
+       for(int i=0;i<list_title.size();i++){
+           list_fragment.add(new BaoYan());
+       }
    }
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu,menu);
@@ -94,6 +109,10 @@ public class MainActivity extends AppCompatActivity  implements TabLayout.OnTabS
         }
         if(tab.getText().toString().equals("我的")){
             intent=new Intent(this,Personal.class);
+            startActivity(intent);
+        }
+        if(tab.getText().toString().equals("保研")){
+            intent=new Intent(this,BaoYan.class);
             startActivity(intent);
         }
 
