@@ -36,14 +36,18 @@ public class Gua_PingLun extends AppCompatActivity implements View.OnClickListen
         id=intent.getStringExtra("id");
         author=intent.getStringExtra("author");
 
-        t.setText(title);
-        c.setText(content);
+        t.setText("标题："+"  "+title);
+        c.setText("内容："+"  "+content);
     }
     @Override
     public void onClick(View view) {
-        String comment=author+"@"+e.getText().toString();
-        GuaManager guaManager=new GuaManager(this);
-        guaManager.insertcomment(Integer.parseInt(id),comment);
-        Toast.makeText(this,"保存成功",Toast.LENGTH_LONG).show();
+        if(e.getText().toString()!=null){
+            String comment=author+"@"+e.getText().toString();
+            GuaManager guaManager=new GuaManager(this);
+            guaManager.insertcomment(Integer.parseInt(id),comment);
+            Toast.makeText(this,"保存成功",Toast.LENGTH_LONG).show();
+        }else {
+            Toast.makeText(this,"请输入您的评论",Toast.LENGTH_LONG).show();
+        }
     }
 }

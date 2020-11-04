@@ -69,6 +69,7 @@ public class ShowGua extends AppCompatActivity implements View.OnClickListener {
         shoucang.setOnClickListener(this);
         dianzan.setOnClickListener(this);
         pinglun.setOnClickListener(this);
+        guanzhu.setOnClickListener(this);
 
         showcomment();
     }
@@ -88,15 +89,17 @@ public class ShowGua extends AppCompatActivity implements View.OnClickListener {
         if (view.getId() == R.id.pinglun) {
             intent = new Intent(this, Gua_PingLun.class);
             intent.putExtra("title", gettitle);
-            intent.putExtra("Content", getcontent);
+            intent.putExtra("content", getcontent);
             intent.putExtra("id", getid);
             intent.putExtra("author", getauthor);
+            Log.i(TAG, "onClick: "+getauthor);
             startActivity(intent);
         }
     }
 
     protected void onResume() {
         super.onResume();
+        showcomment();
         getInfo();
     }
 
@@ -124,7 +127,7 @@ public class ShowGua extends AppCompatActivity implements View.OnClickListener {
                 String ss[] = temp[i].split("@");
                 HashMap<String,String>map=new HashMap<>();
                 map.put("at",ss[0]);
-                map.put("et",ss[1]);
+                map.put("et",ss[0]);
                 list.add(map);
             }
             PingLunAdapter pingLunAdapter=new PingLunAdapter(this,R.layout.pinglun_item,list);
