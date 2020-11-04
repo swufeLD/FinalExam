@@ -63,6 +63,9 @@ public class BYShow_history extends AppCompatActivity implements View.OnClickLis
         sp1.setAdapter(adapter1);
         sp2.setAdapter(adapter2);
 
+        index2=0;
+        index1=0;
+
     }
 
     @Override

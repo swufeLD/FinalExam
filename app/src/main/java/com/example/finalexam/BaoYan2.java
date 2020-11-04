@@ -46,6 +46,8 @@ public class BaoYan2 extends AppCompatActivity implements AdapterView.OnClickLis
         int count=1;
         if(view.getId()==R.id.b1){
             b1.setTextColor(Color.rgb(255,140,0));
+            b2.setTextColor(Color.rgb(	0,0,0));
+            b3.setTextColor(Color.rgb(	0,0,0));
             count=1;
             getEdge();
             EdgeBYPAdapter edgeBYPAdapter=new EdgeBYPAdapter(this,R.layout.edge_item,arrayList);
@@ -53,6 +55,8 @@ public class BaoYan2 extends AppCompatActivity implements AdapterView.OnClickLis
         }
         if(view.getId()==R.id.b2){
             b2.setTextColor(Color.rgb(255,140,0));
+            b1.setTextColor(Color.rgb(	0,0,0));
+            b3.setTextColor(Color.rgb(	0,0,0));
             count=2;
         }
         if(view.getId()==R.id.b3){
@@ -60,6 +64,8 @@ public class BaoYan2 extends AppCompatActivity implements AdapterView.OnClickLis
             count=3;
             intent=new Intent(this,BYShow_history.class);
             startActivity(intent);
+            b1.setTextColor(Color.rgb(	0,0,0));
+            b2.setTextColor(Color.rgb(	0,0,0));
         }
         if(view.getId()==R.id.imageButton2){
             intent=new Intent(this, Baoyan_Editor.class);

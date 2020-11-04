@@ -44,7 +44,7 @@ public class Gua_PingLun extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         if(e.getText().toString()!=null){
-            String comment= author + "&" +e.getText().toString();
+            String comment= author + "@" +e.getText().toString();
             Log.i(TAG, "onClick: "+comment);
             GuaManager guaManager=new GuaManager(this);
             guaManager.insertcomment(Integer.parseInt(id),comment);

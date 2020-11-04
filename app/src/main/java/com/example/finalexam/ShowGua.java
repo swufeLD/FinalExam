@@ -125,7 +125,8 @@ public class ShowGua extends AppCompatActivity implements View.OnClickListener {
             String temp[] = getcomment.split("#");
             ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
             for (int i = 0; i < temp.length; i++) {
-                String ss[] = temp[i].split("&");
+                String ss[] = temp[i].split("@");
+                Log.i(TAG, "showcomment: "+ss);
                 Log.i(TAG, "showcomment: "+ss.length);
                 HashMap<String,String>map=new HashMap<>();
                 map.put("at",ss[0]);

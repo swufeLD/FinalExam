@@ -7,7 +7,9 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,19 +25,19 @@ public class MainActivity extends AppCompatActivity  implements TabLayout.OnTabS
     TabLayout tab1;
     TabLayout tab2;
     List<String> list_title;
- //   ViewPager vp;
+    ViewPager2 vp;
     Intent intent;
     List<Fragment> list_fragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
-
     }
    public void initViews(){
         updata();
-      //  vp=findViewById(R.id.vp);
+        vp=findViewById(R.id.vp);
         tab2=findViewById(R.id.tab2);
         tab1=findViewById(R.id.tab1);
         for(int i=0;i<list_title.size();i++){
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity  implements TabLayout.OnTabS
            tab1.addTab(tab1.newTab().setText(list_title.get(i)));
        }
 
-      MyFragmentAdapter myFragmentAdapter=new MyFragmentAdapter(getSupportFragmentManager(),list_title,list_fragment);
+      //MyFragmentAdapter myFragmentAdapter=new MyFragmentAdapter(getSupportFragmentManager(),list_title,list_fragment);
       // vp.setAdapter(myFragmentAdapter);
       // tab1.setupWithViewPager(vp);
 
@@ -62,8 +64,8 @@ public class MainActivity extends AppCompatActivity  implements TabLayout.OnTabS
    }
    public void updata(){
        list_title=new ArrayList<>();
-       list_title.add("保研");
        list_title.add("考研");
+       list_title.add("保研");
        list_title.add("就业");
        list_title.add("出国");
        list_title.add("活动");
@@ -112,7 +114,7 @@ public class MainActivity extends AppCompatActivity  implements TabLayout.OnTabS
             startActivity(intent);
         }
         if(tab.getText().toString().equals("保研")){
-            intent=new Intent(this,BaoYan.class);
+            intent=new Intent(this,BaoYan2.class);
             startActivity(intent);
         }
 
