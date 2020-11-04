@@ -86,4 +86,9 @@ public void init(){
              intent=new Intent(this,ShowGua.class);
              startActivity(intent);
     }
+    protected void onResume() {
+        super.onResume();
+         init();
+    }
+
 }
