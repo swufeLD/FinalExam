@@ -1,5 +1,6 @@
 package com.example.finalexam;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,6 +14,22 @@ public class BYPManager {
     public BYPManager(Context context){
         dbHelper=new BYP_DBHelper(context);
         usertable=BYP_DBHelper.BYP;
+    }
+    public void add(BYPMessage message ){
+        SQLiteDatabase db=dbHelper.getWritableDatabase();
+        ContentValues values =new ContentValues();
+
+        values.put("Name",message.getName());
+        values.put("StuId",message.getStuId());
+        values.put("Score",message.getScore());
+        values.put("Sort",message.getSort());
+        values.put("Target",message.getTarget());
+        values.put("TargetMajor",message.getTargetMajor());
+        values.put("Contact",message.getContact());
+        values.put("Get",message.getGet());
+
+        db.insert(usertable,null,values);
+        db.close();
     }
     public BYPMessage GetBYP(String stuid){
         BYPMessage bypMessage=new BYPMessage();

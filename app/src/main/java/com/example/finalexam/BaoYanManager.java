@@ -1,5 +1,6 @@
 package com.example.finalexam;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,6 +15,19 @@ public class BaoYanManager {
     public BaoYanManager(Context context){
         dbHelper=new BaoYan_DBHelper(context);
         usertable=BaoYan_DBHelper.BaoYan;
+    }
+    public void add(BaoYanMessage message ){
+        SQLiteDatabase db=dbHelper.getWritableDatabase();
+        ContentValues values =new ContentValues();
+
+        values.put("Author",message.getName());
+        values.put("StuId",message.getStuId());
+        values.put("Grade",message.getGrade());
+        values.put("College",message.getCollege());
+        values.put("Major",message.getMajor());
+
+        db.insert(usertable,null,values);
+        db.close();
     }
     public ArrayList<BaoYanMessage> list(String college){
         ArrayList<BaoYanMessage> list=new ArrayList<>();
