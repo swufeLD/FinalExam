@@ -3,6 +3,7 @@ package com.example.finalexam;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -42,13 +43,14 @@ public class ShowGua extends AppCompatActivity implements View.OnClickListener {
     String getcomment;
 
     Intent intent;
-
+     int sum;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.showgua);
         initView();
         getInfo();
         showcomment();
+        sum=0;
     }
 
     public void initView() {
@@ -81,11 +83,23 @@ public class ShowGua extends AppCompatActivity implements View.OnClickListener {
             GuanZhu guanZhu = new GuanZhu(getauthor, getdate);
             GuanZhuManager guanZhuManager = new GuanZhuManager(this);
             guanZhuManager.add(guanZhu);
+            guanzhu.setBackgroundResource(R.drawable.checkmark);
+            sum++;
+            addCount(Integer.parseInt(getid),sum);
         }
         if (view.getId() == R.id.shoucang) {
             ShowCang showCang = new ShowCang(getauthor, getdate, gettitle, getcontent);
             ShouCangManager shouCangManager = new ShouCangManager(this);
             shouCangManager.add(showCang);
+            shoucang.setBackgroundResource(R.drawable.sc);
+            sum++;
+            addCount(Integer.parseInt(getid),sum);
+        }
+        if (view.getId() == R.id.dianzan) {
+           dianzan.setBackgroundResource(R.drawable.love);
+           sum++;
+            addCount(Integer.parseInt(getid),sum);
+           //将点赞内容加入数据库
         }
         if (view.getId() == R.id.pinglun) {
             intent = new Intent(this, Gua_PingLun.class);
@@ -95,6 +109,9 @@ public class ShowGua extends AppCompatActivity implements View.OnClickListener {
             intent.putExtra("author", getauthor);
             Log.i(TAG, "onClick: "+getauthor);
             startActivity(intent);
+            pinglun.setBackgroundResource(R.drawable.msg);
+            sum++;
+            addCount(Integer.parseInt(getid),sum);
         }
     }
 
@@ -104,7 +121,12 @@ public class ShowGua extends AppCompatActivity implements View.OnClickListener {
         getInfo();
     }
 
-   public void getInfo() {
+    public void addCount(int id,int count){
+        GuaManager guaManager=new GuaManager(this);
+        guaManager.addCount(id,count);
+    }
+
+    public void getInfo() {
         SharedPreferences sharedPreferences = getSharedPreferences("Gua", Activity.MODE_PRIVATE);
         getid = sharedPreferences.getString("id", "");
         gettitle = sharedPreferences.getString("title", "");

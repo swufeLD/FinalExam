@@ -76,7 +76,7 @@
                 android:id="@+id/shoucang"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                tools:srcCompat="@mipmap/shoucang" />
+                tools:srcCompat="@mipmap/sc" />
 
             <TextView
                 android:id="@+id/textView31"
@@ -96,7 +96,7 @@
                 android:id="@+id/dianzan"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                tools:srcCompat="@mipmap/dianzan" />
+                tools:srcCompat="@mipmap/love" />
 
             <TextView
                 android:id="@+id/textView30"
@@ -114,7 +114,7 @@
                 android:id="@+id/pinglun"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@mipmap/msg" />
 
             <TextView
                 android:id="@+id/textView32"

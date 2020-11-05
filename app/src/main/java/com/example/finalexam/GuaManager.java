@@ -69,4 +69,14 @@ public class GuaManager {
         db.update(usertable,values,"ID=?", new String[]{String.valueOf(id)});
         db.close();
     }
+    public void addCount(int id,int count){
+        SQLiteDatabase db=dbHelper.getWritableDatabase();
+        Cursor cursor=db.query(usertable,null,"ID=?",new String[]{String.valueOf(id)},null,null,null);
+        if(cursor!=null && cursor.moveToFirst()){
+            ContentValues values = new ContentValues();
+            values.put("Count",count);
+            db.update(usertable,values,"ID=?", new String[]{String.valueOf(id)});
+        }
+        db.close();
+    }
 }
