@@ -152,7 +152,7 @@ public class ShowGua extends AppCompatActivity implements View.OnClickListener {
                 Log.i(TAG, "showcomment: "+ss.length);
                 HashMap<String,String>map=new HashMap<>();
                 map.put("at",ss[0]);
-                map.put("et",ss[1]);
+                map.put("et",ss[0]);
                 list.add(map);
             }
             PingLunAdapter pingLunAdapter=new PingLunAdapter(this,R.layout.pinglun_item,list);

@@ -44,7 +44,9 @@ public void showSC(){
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int postion, long id) {
         //根据作者，题目，找到 消息的全貌，放入文件；
-
+        String a= list.get(postion).getAuthor();
+        String t=list.get(postion).getTitle();
+        String c=list.get(postion).getContent();
         //跳转到showegua
     }
 }

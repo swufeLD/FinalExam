@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 public class PingLunAdapter extends ArrayAdapter implements View.OnClickListener {
-    Button bt;
+    ImageButton bt;
     public PingLunAdapter(@NonNull Context context, int resource, ArrayList<HashMap<String,String>> list) {
         super(context, resource,list);
     }
@@ -34,7 +35,7 @@ public class PingLunAdapter extends ArrayAdapter implements View.OnClickListener
         Map<String, String> map = (Map<String, String>) getItem(position);
         TextView at = (TextView) itemView.findViewById(R.id.at);
         TextView et = (TextView) itemView.findViewById(R.id.et);
-        bt=itemView.findViewById(R.id.bt);
+        bt=(ImageButton) itemView.findViewById(R.id.bt);
         bt.setOnClickListener(this);
 
         at.setText(map.get("at"));
@@ -46,5 +47,6 @@ public class PingLunAdapter extends ArrayAdapter implements View.OnClickListener
     @Override
     public void onClick(View view) {
         bt.setBackgroundResource(R.drawable.love);
+        bt.setBackgroundColor(Color.rgb(220,20,60));
     }
 }

@@ -16,15 +16,15 @@
             android:layout_weight="1"
             android:text=""
             android:textSize="20dp"
-            android:layout_marginTop="25dp"/>
+            android:layout_marginTop="10dp"/>
 
         <ImageButton
             android:id="@+id/bt"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="点赞"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginRight="10dp"
             android:src="@mipmap/love"/>
+
     </LinearLayout>
     <TextView
         android:id="@+id/et"

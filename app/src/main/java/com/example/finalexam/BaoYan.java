@@ -46,6 +46,10 @@ public class BaoYan extends Fragment implements View.OnClickListener {
         b1.setOnClickListener(this);
         b2.setOnClickListener(this);
         b3.setOnClickListener(this);
+
+        getEdge();
+        EdgeBYPAdapter edgeBYPAdapter=new EdgeBYPAdapter(getActivity(),R.layout.edge_item,arrayList);
+        list.setAdapter(edgeBYPAdapter);
     }
 
     @Override
@@ -86,4 +90,10 @@ public class BaoYan extends Fragment implements View.OnClickListener {
             arrayList.add(map);
         }
 }
+    public void onResume() {
+        super.onResume();
+        getEdge();
+        EdgeBYPAdapter edgeBYPAdapter=new EdgeBYPAdapter(getActivity(),R.layout.edge_item,arrayList);
+        list.setAdapter(edgeBYPAdapter);
+    }
 }

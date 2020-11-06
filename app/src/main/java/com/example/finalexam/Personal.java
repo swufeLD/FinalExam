@@ -94,7 +94,8 @@ public  void initview(){
         }
         if(view.getId()==R.id.tv1){
             //收藏页
-
+            intent=new Intent(this,ShowSC.class);
+            startActivity(intent);
         }
         if(view.getId()==R.id.tv2){
             //点赞页

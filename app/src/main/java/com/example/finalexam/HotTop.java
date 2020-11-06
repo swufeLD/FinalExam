@@ -111,5 +111,4 @@ public class HotTop extends AppCompatActivity implements Runnable, AdapterView.O
         intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
-
 }

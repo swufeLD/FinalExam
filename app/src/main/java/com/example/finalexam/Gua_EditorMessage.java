@@ -55,7 +55,7 @@ public class Gua_EditorMessage extends AppCompatActivity implements View.OnClick
         String t=title.getText().toString();
         String c=content.getText().toString();
 
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH");
         date=df.format(new Date());
         int count=0;
         GuaMessage guaMessage=new GuaMessage(author,date,t,c,count,"");

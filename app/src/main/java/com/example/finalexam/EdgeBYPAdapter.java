@@ -34,8 +34,8 @@ public class EdgeBYPAdapter extends ArrayAdapter {
         TextView index = (TextView) itemView.findViewById(R.id.index);
         TextView content = (TextView) itemView.findViewById(R.id.content);
 
-        index.setText(map.get("index"));
-        content.setText(map.get("content"));
+        index.setText("标题："+map.get("index"));
+        content.setText("内容："+map.get("content"));
         content.setTextSize(20);
 
         return itemView;

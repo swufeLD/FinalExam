@@ -35,10 +35,10 @@ public class ShowSCAdapetr extends ArrayAdapter {
         TextView tt= (TextView) itemView.findViewById(R.id.tt);
         TextView cc = (TextView) itemView.findViewById(R.id.cc);
 
-        aa.setText(map.get("aa"));
-        dd.setText(map.get("dd"));
-        tt.setText(map.get("tt"));
-        cc.setText(map.get("cc"));
+        aa.setText("Author: "+map.get("aa"));
+        dd.setText("Dtae: "+map.get("dd"));
+        tt.setText("Title: "+map.get("tt"));
+        cc.setText("Content: "+map.get("cc"));
 
         return itemView;
     }
